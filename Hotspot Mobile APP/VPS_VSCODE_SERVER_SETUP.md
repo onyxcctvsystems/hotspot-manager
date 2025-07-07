@@ -643,6 +643,51 @@ scp root@your-vps-ip:~/hotspot-manager/android/app/build/outputs/apk/debug/app-d
 
 =============================================
 
+## 🚨 CRITICAL FIX: Missing app/build.gradle Issue
+
+### **Problem Identified:**
+The diagnostic revealed that `app/build.gradle` was missing, causing the "assembleDebug task not found" error.
+
+### **IMMEDIATE SOLUTION:**
+Run this command on your VPS to restore the complete Android project structure:
+
+```bash
+cd ~ && wget https://raw.githubusercontent.com/onyxcctvsystems/hotspot-manager/main/Hotspot%20Mobile%20APP/vps_complete_structure_fix.sh && chmod +x vps_complete_structure_fix.sh && ./vps_complete_structure_fix.sh
+```
+
+### **What This Script Does:**
+1. ✅ Creates missing `app/build.gradle` with all proper dependencies
+2. ✅ Creates `app/proguard-rules.pro`
+3. ✅ Creates complete `AndroidManifest.xml`
+4. ✅ Creates `MainActivity.kt`
+5. ✅ Creates all missing resource files (strings, themes, colors, layouts)
+6. ✅ Creates drawable icons
+7. ✅ Creates backup and data extraction rules
+8. ✅ Updates root `build.gradle`
+9. ✅ Cleans up corrupted files
+10. ✅ Tests the build and generates APK
+
+### **Expected Output:**
+After running the script, you should see:
+```
+✅ SUCCESS! APK built successfully!
+📱 APK location: ./app/build/outputs/apk/debug/app-debug.apk
+```
+
+### **Alternative Manual Fix:**
+If the script fails, you can manually restore the project:
+
+```bash
+cd ~/hotspot-manager
+git pull origin main
+cd "Hotspot Mobile APP/android"
+# The script will have been downloaded, so just run:
+chmod +x vps_complete_structure_fix.sh
+./vps_complete_structure_fix.sh
+```
+
+=============================================
+
 ## 🎯 FINAL BUILD VERIFICATION & APK GENERATION
 
 ### **Windows Issue Resolution**
