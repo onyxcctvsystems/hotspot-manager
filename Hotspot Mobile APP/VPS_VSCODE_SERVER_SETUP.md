@@ -899,3 +899,69 @@ After successful build, download the APK:
 - ✅ `android/gradlew` - Executable Gradle wrapper
 - ✅ All missing Android resource files
 - ✅ Updated documentation with complete process
+
+## 📱 **HOW TO TEST YOUR ANDROID APP**
+
+### **🎯 Quick Testing Overview**
+After building your APK successfully, here are the main ways to test it:
+
+### **Method 1: Physical Android Device (Recommended)**
+```bash
+# 1. Download APK from VPS to Windows
+scp root@your-vps-ip:~/hotspot-manager/android/app/build/outputs/apk/debug/app-debug.apk .
+
+# 2. Enable Developer Options on your Android device:
+#    - Settings → About Phone → Tap "Build Number" 7 times
+#    - Settings → Developer Options → Enable "USB Debugging"
+
+# 3. Install APK on device:
+#    - Transfer APK to device via USB/cloud
+#    - Use file manager to install
+#    - Or use ADB: adb install app-debug.apk
+```
+
+### **Method 2: Android Studio Emulator**
+```bash
+# 1. Download and install Android Studio
+# 2. Create an Android Virtual Device (AVD)
+# 3. Install APK on emulator: adb install app-debug.apk
+```
+
+### **Method 3: Online Testing Services**
+- **BrowserStack App Live**: Upload APK and test on real devices
+- **Firebase Test Lab**: Automated testing on multiple devices
+- **AWS Device Farm**: Test on physical devices in the cloud
+
+### **🧪 Basic Testing Checklist**
+- [ ] App installs without errors
+- [ ] App launches successfully  
+- [ ] Main screen loads properly
+- [ ] Navigation drawer opens/closes
+- [ ] Menu items are clickable
+- [ ] No crashes during basic navigation
+- [ ] App handles network errors gracefully
+
+### **📊 Debug and Monitor**
+```bash
+# View app logs
+adb logcat | grep "HotspotManager"
+
+# Monitor performance
+adb shell top | grep hotspot
+```
+
+### **🎯 Testing Your Specific Features**
+1. **Dashboard**: Check if router stats load
+2. **Router Management**: Test connection to Mikrotik devices
+3. **Package Management**: Create/edit/delete packages
+4. **Voucher System**: Generate and manage vouchers
+5. **Settings**: Verify settings persistence
+
+### **📲 Distribution Options**
+- **Direct APK**: Share APK file with users
+- **Google Play Internal Testing**: Upload to Play Console
+- **Firebase App Distribution**: Distribute to beta testers
+
+**For detailed testing instructions, see: `ANDROID_TESTING_GUIDE.md`**
+
+=============================================
