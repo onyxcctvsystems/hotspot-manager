@@ -642,3 +642,78 @@ scp root@your-vps-ip:~/hotspot-manager/android/app/build/outputs/apk/debug/app-d
 **Your Android app is now ready to build on the VPS!** 🎉
 
 =============================================
+
+## 🎯 FINAL BUILD VERIFICATION & APK GENERATION
+
+### **Windows Issue Resolution**
+The Windows environment has Java PATH issues preventing Gradle from running. The solution is to complete the migration to VPS where Java 17 is properly configured.
+
+### **Automated Build Verification Script**
+A comprehensive script has been created to verify and complete the Android build process:
+
+```bash
+# Run this script on your VPS to verify the complete build setup
+./android/vps_complete_build_verification.sh
+```
+
+**This script will:**
+1. ✅ Verify Java 17 installation
+2. ✅ Configure JAVA_HOME and Android SDK paths
+3. ✅ Validate project structure
+4. ✅ Make Gradle wrapper executable
+5. ✅ Test Gradle configuration
+6. ✅ Clean previous builds
+7. ✅ Build debug APK
+8. ✅ Verify APK generation
+
+### **Step-by-Step Migration Process**
+
+#### **1. Push Final Changes from Windows**
+```bash
+cd "c:\Users\onyxt\Documents\OneDrive_onyxcctv_systems\OneDrive\Hotspot Project\Hotspot Mobile APP"
+git add .
+git commit -m "Final Android project structure for VPS migration"
+git push origin main
+```
+
+#### **2. Complete Setup on VPS**
+```bash
+# Connect to VPS
+ssh root@your-vps-ip
+
+# Navigate to project or clone if needed
+cd ~/hotspot-manager || git clone https://github.com/yourusername/hotspot-manager.git && cd hotspot-manager
+
+# Pull latest changes
+git pull origin main
+
+# Run comprehensive build verification
+cd android
+chmod +x vps_complete_build_verification.sh
+./vps_complete_build_verification.sh
+```
+
+#### **3. Expected Successful Output**
+```
+✓ Java 17 properly configured
+✓ Android SDK with required components
+✓ Project structure validated
+✓ Gradle wrapper working
+✓ assembleDebug task available
+✓ APK built successfully at: app/build/outputs/apk/debug/app-debug.apk
+```
+
+### **Download Your APK**
+After successful build, download the APK:
+
+1. **Via VS Code Server**: Navigate to `app/build/outputs/apk/debug/` and download `app-debug.apk`
+2. **Via SCP**: `scp root@your-vps-ip:~/hotspot-manager/android/app/build/outputs/apk/debug/app-debug.apk .`
+
+### **Key Files Created/Fixed**
+- ✅ `android/vps_complete_build_verification.sh` - Comprehensive build verification
+- ✅ `android/final_migration_guide.sh` - Complete migration instructions
+- ✅ `android/app/build.gradle` - Properly configured with all dependencies
+- ✅ `android/settings.gradle` - Clean project configuration
+- ✅ `android/gradlew` - Executable Gradle wrapper
+- ✅ All missing Android resource files
+- ✅ Updated documentation with complete process
