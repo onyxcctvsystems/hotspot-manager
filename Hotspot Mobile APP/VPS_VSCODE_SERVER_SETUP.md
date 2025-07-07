@@ -701,6 +701,22 @@ This script adds all missing color resources:
 - ✅ Status colors (colorSuccess, colorError, colorWarning, colorInfo)
 - ✅ Night mode colors and themes
 
+### **🎨 Final Theme Styles Fix (If Still Missing AppBar Styles):**
+If you get "Theme.HotspotManager.AppBarOverlay not found" errors, run this final fix:
+
+```bash
+cd ~ && wget https://raw.githubusercontent.com/onyxcctvsystems/hotspot-manager/main/Hotspot%20Mobile%20APP/vps_final_theme_fix.sh && chmod +x vps_final_theme_fix.sh && ./vps_final_theme_fix.sh
+```
+
+This final script adds all missing theme styles:
+- ✅ Theme.HotspotManager.AppBarOverlay
+- ✅ Theme.HotspotManager.PopupOverlay
+- ✅ Theme.HotspotManager.NoActionBar
+- ✅ Night mode theme variations
+- ✅ Fixes app_bar_main.xml layout
+- ✅ Creates content_main.xml layout
+- ✅ Adds appbar_scrolling_view_behavior string
+
 =============================================
 
 ## 🎯 FINAL BUILD VERIFICATION & APK GENERATION
