@@ -686,6 +686,21 @@ chmod +x vps_complete_structure_fix.sh
 ./vps_complete_structure_fix.sh
 ```
 
+### **🎨 Color Resources Fix (If Build Still Fails):**
+If you get "color/colorPrimary not found" errors, run this additional fix:
+
+```bash
+cd ~ && wget https://raw.githubusercontent.com/onyxcctvsystems/hotspot-manager/main/Hotspot%20Mobile%20APP/vps_colors_fix.sh && chmod +x vps_colors_fix.sh && ./vps_colors_fix.sh
+```
+
+This script adds all missing color resources:
+- ✅ Primary colors (colorPrimary, colorPrimaryDark, colorAccent)
+- ✅ Text colors (textPrimary, textSecondary, textHint)
+- ✅ Background colors (backgroundColor, surfaceColor)  
+- ✅ Button colors (buttonPrimary, buttonSecondary)
+- ✅ Status colors (colorSuccess, colorError, colorWarning, colorInfo)
+- ✅ Night mode colors and themes
+
 =============================================
 
 ## 🎯 FINAL BUILD VERIFICATION & APK GENERATION
