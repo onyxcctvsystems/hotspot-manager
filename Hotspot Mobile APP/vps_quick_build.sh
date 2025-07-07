@@ -22,8 +22,12 @@ fi
 echo "📍 Navigating to Android project..."
 cd "Hotspot Mobile APP/android" || {
     echo "❌ Error: Cannot find Android project directory"
-    echo "Directory structure:"
+    echo "📂 Current directory: $(pwd)"
+    echo "📋 Directory structure:"
     ls -la
+    echo ""
+    echo "🔍 Looking for Android project..."
+    find . -name "gradlew" -type f 2>/dev/null || echo "No gradlew found"
     exit 1
 }
 

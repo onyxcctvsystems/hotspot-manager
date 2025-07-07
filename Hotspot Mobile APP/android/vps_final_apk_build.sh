@@ -7,8 +7,11 @@ echo "=== VPS Final APK Build Script ==="
 echo "Starting final fixes and APK build..."
 
 # Set correct working directory
-cd /root/hotspot-manager/android || {
-    echo "Error: Cannot access /root/hotspot-manager/android"
+cd "/root/hotspot-manager/Hotspot Mobile APP/android" || {
+    echo "Error: Cannot access /root/hotspot-manager/Hotspot Mobile APP/android"
+    echo "Current directory: $(pwd)"
+    echo "Looking for Android project..."
+    find /root -name "gradlew" -type f 2>/dev/null | head -5
     exit 1
 }
 
