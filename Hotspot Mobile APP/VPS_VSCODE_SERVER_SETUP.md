@@ -732,6 +732,20 @@ This final script resolves KAPT annotation issues:
 - ✅ Keeps all themes, colors, and layouts intact
 - ✅ Generates working APK ready for download
 
+### **🎯 Final Data Binding Layout Fix (If Layout Errors):**
+If you get "Found `<layout>` but data binding is not enabled" errors, run this final fix:
+
+```bash
+cd ~ && wget https://raw.githubusercontent.com/onyxcctvsystems/hotspot-manager/main/Hotspot%20Mobile%20APP/vps_databinding_layout_fix.sh && chmod +x vps_databinding_layout_fix.sh && ./vps_databinding_layout_fix.sh
+```
+
+This script fixes data binding layout issues:
+- ✅ Removes problematic layout files using `<layout>` tags
+- ✅ Creates simple replacement layouts without data binding
+- ✅ Adds missing dimensions and navigation headers
+- ✅ Re-enables data binding in build.gradle properly
+- ✅ Generates working APK without layout errors
+
 =============================================
 
 ## 🎯 FINAL BUILD VERIFICATION & APK GENERATION
