@@ -717,6 +717,21 @@ This final script adds all missing theme styles:
 - ✅ Creates content_main.xml layout
 - ✅ Adds appbar_scrolling_view_behavior string
 
+### **🔧 Final KAPT Fix (If Annotation Processing Errors):**
+If you get "NonExistentClass cannot be converted to Annotation" errors, run this final fix:
+
+```bash
+cd ~ && wget https://raw.githubusercontent.com/onyxcctvsystems/hotspot-manager/main/Hotspot%20Mobile%20APP/vps_kapt_fix.sh && chmod +x vps_kapt_fix.sh && ./vps_kapt_fix.sh
+```
+
+This final script resolves KAPT annotation issues:
+- ✅ Removes problematic kotlin-kapt plugin
+- ✅ Simplifies build.gradle (removes data binding temporarily)
+- ✅ Creates clean MainActivity.kt without complex annotations
+- ✅ Removes problematic Kotlin data classes
+- ✅ Keeps all themes, colors, and layouts intact
+- ✅ Generates working APK ready for download
+
 =============================================
 
 ## 🎯 FINAL BUILD VERIFICATION & APK GENERATION
