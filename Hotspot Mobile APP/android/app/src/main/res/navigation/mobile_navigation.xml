@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_dashboard">
+
+    <fragment
+        android:id="@+id/nav_dashboard"
+        android:name="com.onyx.hotspotmanager.ui.fragment.DashboardFragment"
+        android:label="@string/menu_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/nav_routers"
+        android:name="com.onyx.hotspotmanager.ui.fragment.RoutersFragment"
+        android:label="@string/menu_routers"
+        tools:layout="@layout/fragment_routers" />
+
+    <fragment
+        android:id="@+id/nav_packages"
+        android:name="com.onyx.hotspotmanager.ui.fragment.PackagesFragment"
+        android:label="@string/menu_packages"
+        tools:layout="@layout/fragment_packages" />
+
+    <fragment
+        android:id="@+id/nav_vouchers"
+        android:name="com.onyx.hotspotmanager.ui.fragment.VouchersFragment"
+        android:label="@string/menu_vouchers"
+        tools:layout="@layout/fragment_vouchers" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.onyx.hotspotmanager.ui.fragment.SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_settings" />
+
+</navigation>

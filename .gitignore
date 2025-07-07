@@ -1,0 +1,54 @@
+# Android Studio
+.idea/
+.gradle/
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+*.apk
+*.ap_
+*.aab
+
+# Android specific
+Hotspot Mobile APP/android/app/build/
+Hotspot Mobile APP/android/build/
+Hotspot Mobile APP/android/.gradle/
+Hotspot Mobile APP/android/app/release/
+Hotspot Mobile APP/android/app/debug/
+Hotspot Mobile APP/android/local.properties
+Hotspot Mobile APP/android/gradle.properties.bak
+
+# Backend
+backend/config/database.php
+backend/uploads/
+backend/logs/
+backend/cache/
+
+# General
+*.log
+*.tmp
+*.bak
+*~
+.vscode/
+node_modules/
+.env
+.env.local
+.env.production
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
