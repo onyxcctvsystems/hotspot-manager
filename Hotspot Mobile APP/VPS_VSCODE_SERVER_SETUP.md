@@ -348,6 +348,34 @@ sed -i '/buildFeatures {/,/}/ { /viewBinding true/a\        dataBinding true; }'
 # 6. Clean and rebuild
 ./gradlew clean
 ./gradlew build
+
+# 🎉 SUCCESS! Data binding fixed! Now fix missing strings:
+# If you get "string resource not found" errors, add missing strings:
+
+# 7. Add missing string resources
+cat >> app/src/main/res/values/strings.xml << 'EOF'
+    
+    <!-- Navigation strings -->
+    <string name="nav_header_title">Hotspot Manager</string>
+    <string name="nav_header_subtitle">Mikrotik Management System</string>
+    <string name="nav_header_desc">Navigation header</string>
+    
+    <!-- Menu strings -->
+    <string name="menu_dashboard">Dashboard</string>
+    <string name="menu_routers">Routers</string>
+    <string name="menu_packages">Packages</string>
+    <string name="menu_vouchers">Vouchers</string>
+    <string name="menu_settings">Settings</string>
+    <string name="action_logout">Logout</string>
+EOF
+
+# 8. Fix the strings.xml file structure (remove duplicate closing tag)
+sed -i '$d' app/src/main/res/values/strings.xml
+echo '</resources>' >> app/src/main/res/values/strings.xml
+
+# 9. Clean and rebuild after adding strings
+./gradlew clean
+./gradlew build
 ```
 
 ### **Step 7: Troubleshooting Build Issues**
