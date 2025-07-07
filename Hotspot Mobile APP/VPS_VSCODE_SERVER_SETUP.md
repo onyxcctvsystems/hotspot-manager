@@ -376,6 +376,122 @@ echo '</resources>' >> app/src/main/res/values/strings.xml
 # 9. Clean and rebuild after adding strings
 ./gradlew clean
 ./gradlew build
+
+# 🎯 FINAL STEP: Fix Kotlin/Compose Version Compatibility
+# The current issue is: Compose Compiler 1.3.2 requires Kotlin 1.7.20, but we're using Kotlin 1.9.22
+# Solution: Update Compose dependencies to be compatible with Kotlin 1.9.22
+
+# 10. Update app/build.gradle to fix Compose version compatibility
+cp app/build.gradle app/build.gradle.backup2
+cat > app/build.gradle << 'EOF'
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'com.onyx.hotspotmanager'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.onyx.hotspotmanager"
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+        compose true
+    }
+    
+    composeOptions {
+        kotlinCompilerExtensionVersion = '1.5.8'
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.6'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.7.6'
+    implementation 'androidx.drawerlayout:drawerlayout:1.2.0'
+    
+    // Compose BOM - manages all Compose library versions
+    implementation platform('androidx.compose:compose-bom:2024.02.00')
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.ui:ui-graphics'
+    implementation 'androidx.compose.ui:ui-tooling-preview'
+    implementation 'androidx.compose.material3:material3'
+    implementation 'androidx.activity:activity-compose:1.8.2'
+    
+    // Testing
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation platform('androidx.compose:compose-bom:2024.02.00')
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
+}
+EOF
+
+# 11. Final clean and build with updated dependencies
+./gradlew clean
+./gradlew build
+
+# 12. If successful, generate the APK
+./gradlew assembleDebug
+
+# 13. Find and list the generated APK
+echo "Looking for generated APK files..."
+find . -name "*.apk" -type f
+
+# 14. List debug APK details
+echo "Debug APK location:"
+ls -la app/build/outputs/apk/debug/
+
+# 15. Show APK file info
+echo "APK file information:"
+file app/build/outputs/apk/debug/app-debug.apk 2>/dev/null || echo "APK not found yet"
+
+# 🎉 SUCCESS! You should now have a working APK file!
+echo "============================================="
+echo "🎉 BUILD COMPLETE! 🎉"
+echo "============================================="
+echo "If the build was successful, your APK is located at:"
+echo "app/build/outputs/apk/debug/app-debug.apk"
+echo ""
+echo "To download it to your Windows machine:"
+echo "scp root@your-vps-ip:~/hotspot-manager/Hotspot\\ Mobile\\ APP/android/app/build/outputs/apk/debug/app-debug.apk ."
+echo ""
+echo "Or use VS Code Server to download it through the web interface!"
+echo "============================================="
 ```
 
 ### **Step 7: Troubleshooting Build Issues**
